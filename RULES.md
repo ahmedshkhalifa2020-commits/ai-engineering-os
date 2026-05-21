@@ -13,6 +13,37 @@ If the task does not lead to real code execution → the agent MUST refuse to pr
 
 ---
 
+## SDLC Governance
+
+The AI Engineering OS enforces a structured lifecycle that prevents premature coding and preserves traceability.
+
+### Required Phase Sequence
+
+1. Discovery
+2. Business Analysis
+3. System Analysis
+4. Architecture
+5. Planning
+6. TDD
+7. Implementation
+8. Review
+9. Security
+10. Release
+
+### Gate Rules
+
+- Implementation cannot begin until architecture approval and TDD artifacts exist.
+- Review cannot begin until implementation is complete and tests pass.
+- Release cannot begin until review and security signoff are complete.
+- Missing discovery, business rules, system boundaries, or use cases blocks progression.
+
+### Workflow Modes
+
+- **Lightweight mode:** for low-risk or prototype work. Enforces discovery, business analysis, planning, TDD, implementation, review, release.
+- **Enterprise mode:** for complex or regulated work. Enforces all phases and formal gate validation.
+
+---
+
 # Project Rules — Always-Follow Guidelines
 
 These rules apply to all code, all agents, and all features. They cannot be waived without explicit discussion.
@@ -343,24 +374,6 @@ Agents MUST NOT:
 - Mix planning and implementation in the same step
 - Ignore rules inside `.claude/rules/`
 - Produce pseudo-code instead of real code
-## Mandatory Execution Flow
-
-Before performing ANY task, the agent MUST:
-
-1. Read AGENTS.md to determine the correct agent
-2. Read RULES.md and all relevant files in .claude/rules/
-3. Validate the task against:
-   - Execution Contract
-   - Definition of Done
-   - Forbidden Behavior
-
-If the task does not lead to real code execution → the agent MUST refuse to proceed.
-
----
-
-# Project Rules — Always-Follow Guidelines
-
-These rules apply to all code, all agents, and all features. They cannot be waived without explicit discussion.
 
 ---
 

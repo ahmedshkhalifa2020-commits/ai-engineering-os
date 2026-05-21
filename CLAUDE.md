@@ -9,35 +9,37 @@ This repository is an **AI Engineering OS foundation** under development.
 - ✅ Implemented: build, lint, format scripts
 - ✅ Implemented: TypeScript strict mode, Tailwind CSS setup
 - ✅ Implemented: Governance rules documentation
+- ✅ Implemented: enterprise SDLC workflow and governance artifacts
 - 🔄 In Progress: Agent capability specifications
 - 🔄 In Progress: Workflow automation and CI/CD
 - 📋 Planned: Command orchestration (`/plan`, `/tdd`, etc.)
 
 ## Quick Workflow Summary
 
-The intended workflow (when fully implemented) will be:
+The intended workflow is now governed by the enterprise SDLC model in `SDLC.md`.
 
 ### Start a new feature
 
 ```
-/plan "Add user authentication"     → Planner creates breakdown [PLANNED]
-/tdd                                 → TDD-guide enforces write-tests-first [PLANNED]
-[Implement using nextjs-implementation]
-/code-review                         → Code-reviewer checks quality [PLANNED]
-/test-coverage                       → Testing-guide verifies 80%+ coverage [PLANNED]
-Merge when all checks pass
+/plan "Add user authentication"     → Planner creates discovery and implementation plan
+/tdd                                  → Testing-guide defines failing tests first
+[nextjs-implementation]               → Write code only after architecture and TDD approvals
+/code-review                          → Code-reviewer validates quality
+/security-review                       → Security-reviewer validates security for enterprise mode
+/release                               → Deploy after all gates pass
 ```
 
-### Current workflow (until orchestration is ready)
+### Current workflow
 
 For now, follow this manual process:
 
-1. Read relevant rule docs in `.claude/rules/`
-2. Write code following RULES.md standards
-3. Run `npm run lint`
-4. Run `npm run test` to verify tests
-5. Review against `code-reviewer.md` guidelines
-6. Merge when all checks pass
+1. Read `SDLC.md` and `.claude/rules/sdlc.md`
+2. Confirm whether the task is `lightweight` or `enterprise`
+3. Complete Discovery and Business Analysis before System Analysis or Architecture
+4. Write tests first under the TDD skill
+5. Write code only after architecture and TDD artifacts are approved
+6. Run `npm run lint` and `npm test`
+7. Review and security signoff before release
 
 ---
 
