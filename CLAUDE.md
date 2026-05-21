@@ -4,7 +4,7 @@ This document provides project-specific guidance that augments the agent definit
 
 ## Current Status
 
-This repository is an **AI Engineering OS foundation** under development. 
+This repository is an **AI Engineering OS foundation** under development.
 
 - ✅ Implemented: build, lint, format scripts
 - ✅ Implemented: TypeScript strict mode, Tailwind CSS setup
