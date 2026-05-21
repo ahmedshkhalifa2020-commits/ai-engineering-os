@@ -89,15 +89,15 @@ Each agent MUST:
 
 ## When to Delegate
 
-| Situation                        | Agent                 | Pattern                                   |
-| -------------------------------- | --------------------- | ----------------------------------------- |
-| "How should I structure auth?"   | planner               | Discovery/architecture planning           |
-| "I need business requirements"  | business-analyst      | Define actors, rules, and use cases       |
-| "How should the system be built?" | architect            | System analysis and architecture design   |
-| "Implement the user signup form" | nextjs-implementation | Feature request → write code after approval |
-| "Are tests sufficient?"         | testing-guide         | TDD and coverage validation               |
-| "Review my login component"      | code-reviewer         | Code written → quality check              |
-| "Is this auth secure?"           | security-reviewer     | Security validation before release        |
+| Situation                         | Agent                 | Pattern                                     |
+| --------------------------------- | --------------------- | ------------------------------------------- |
+| "How should I structure auth?"    | planner               | Discovery/architecture planning             |
+| "I need business requirements"    | business-analyst      | Define actors, rules, and use cases         |
+| "How should the system be built?" | architect             | System analysis and architecture design     |
+| "Implement the user signup form"  | nextjs-implementation | Feature request → write code after approval |
+| "Are tests sufficient?"           | testing-guide         | TDD and coverage validation                 |
+| "Review my login component"       | code-reviewer         | Code written → quality check                |
+| "Is this auth secure?"            | security-reviewer     | Security validation before release          |
 
 ---
 

@@ -381,7 +381,7 @@ Agents MUST NOT:
 
 ### 1. Type Safety (No ny Without Justification)
 
-`	ypescript
+` ypescript
 // ❌ NEVER
 const data: any = fetchData();
 
@@ -410,7 +410,7 @@ describe("User Component", () => {
 
 ### 3. No Console Logs in Production Code
 
-`	ypescript
+` ypescript
 // ❌ NEVER
 console.log("Debug info");
 
@@ -423,7 +423,7 @@ logger.debug("Debug info");
 
 ### 4. Immutability by Default
 
-`	ypescript
+` ypescript
 // ❌ AVOID
 let user = { name: "John" };
 user.name = "Jane"; // mutation
@@ -435,20 +435,20 @@ const updatedUser = { ...user, name: "Jane" }; // new object
 
 ### 5. Error Handling is Mandatory
 
-`	ypescript
+` ypescript
 // ❌ NO
 async function fetchUser(id: string) {
-  return await db.getUser(id);
+return await db.getUser(id);
 }
 
 // ✅ YES
 async function fetchUser(id: string) {
-  try {
-    return await db.getUser(id);
-  } catch (error) {
-    logger.error(\Failed to fetch user \\, error);
-    throw new AppError("User not found", 404);
-  }
+try {
+return await db.getUser(id);
+} catch (error) {
+logger.error(\Failed to fetch user \\, error);
+throw new AppError("User not found", 404);
+}
 }
 `
 
@@ -459,48 +459,50 @@ async function fetchUser(id: string) {
 ### 1. File Structure
 
 `
-src/app/                     # App router directory
-├── page.tsx                 # Route page
-├── layout.tsx               # Route layout
-├── error.tsx                # Error boundary
+src/app/ # App router directory
+├── page.tsx # Route page
+├── layout.tsx # Route layout
+├── error.tsx # Error boundary
 └── [slug]/
-    └── page.tsx
+└── page.tsx
 
-src/components/              # Reusable components
+src/components/ # Reusable components
 ├── Button.tsx
 └── Header.tsx
 
-src/lib/                      # Utilities
-├── db.ts                     # Database queries
-├── auth.ts                   # Authentication
-└── utils.ts                  # Helpers
+src/lib/ # Utilities
+├── db.ts # Database queries
+├── auth.ts # Authentication
+└── utils.ts # Helpers
 `
 
 ### 2. Server vs Client Components
 
-`	ypescript
+` ypescript
 // ✅ Server component by default (no 'use client')
 export default async function Page() {
-  const data = await fetch('...'); // Server-side fetch OK
-  return <div>{data}</div>;
+const data = await fetch('...'); // Server-side fetch OK
+return <div>{data}</div>;
 }
 
 // ✅ Client component when needed
 'use client';
 import { useState } from 'react';
 export default function Button() {
-  const [count, setCount] = useState(0);
-  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+const [count, setCount] = useState(0);
+return <button onClick={() => setCount(count + 1)}>{count}</button>;
 }
 `
 
 ### 3. No Inline Styles (Use CSS Modules)
 
-`	ypescript
+` ypescript
 // ❌ AVOID
+
 <div style={{ color: 'red' }}>Error</div>
 
 // ✅ PREFER
+
 <div className={styles.error}>Error</div>
 // In Button.module.css:
 .error { color: red; }
@@ -508,7 +510,7 @@ export default function Button() {
 
 ### 4. Environment Variables
 
-`	ypescript
+` ypescript
 // ❌ NO
 const apiKey = "sk-1234..."; // hardcoded secret
 
@@ -522,24 +524,24 @@ const apiVersion = process.env.API_VERSION ?? "v1";
 
 ### 5. API Routes Security
 
-`	ypescript
+` ypescript
 // ✅ Always validate input
 export async function POST(req: Request) {
-  const body = await req.json();
+const body = await req.json();
 
-  // Validate
-  if (!body.email || !isValidEmail(body.email)) {
-    return Response.json({ error: "Invalid email" }, { status: 400 });
-  }
+// Validate
+if (!body.email || !isValidEmail(body.email)) {
+return Response.json({ error: "Invalid email" }, { status: 400 });
+}
 
-  // Authenticate
-  const auth = await verifyAuth(req);
-  if (!auth) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
+// Authenticate
+const auth = await verifyAuth(req);
+if (!auth) {
+return Response.json({ error: "Unauthorized" }, { status: 401 });
+}
 
-  // Process
-  return Response.json({ success: true });
+// Process
+return Response.json({ success: true });
 }
 `
 
@@ -549,11 +551,11 @@ export async function POST(req: Request) {
 
 Every merge request must satisfy ALL of these:
 
-- [ ] TypeScript strict mode: \	sc --noEmit\ passes
+- [ ] TypeScript strict mode: \ sc --noEmit\ passes
 - [ ] Tests pass: \
-pm test\ with 80%+ coverage
+      pm test\ with 80%+ coverage
 - [ ] Linting passes: \
-pm run lint\
+      pm run lint\
 - [ ] No console.log in production code
 - [ ] Error handling for all async operations
 - [ ] Documented API changes (if applicable)
@@ -575,23 +577,23 @@ pm run lint\
 <footer (optional)>
 
 Types:
-  feat:     New feature
-  fix:      Bug fix
-  refactor: Code restructure (no behavior change)
-  docs:     Documentation only
-  test:     Test additions/changes
-  chore:    Dependency updates, config changes
+feat: New feature
+fix: Bug fix
+refactor: Code restructure (no behavior change)
+docs: Documentation only
+test: Test additions/changes
+chore: Dependency updates, config changes
 \\\
 
 ### Branch Naming
 
 \\\
-feat/add-user-auth        ✅
-fix/login-error           ✅
-docs/update-readme        ✅
+feat/add-user-auth ✅
+fix/login-error ✅
+docs/update-readme ✅
 
-feature-auth              ❌ (too vague)
-fixing-stuff              ❌ (unclear)
+feature-auth ❌ (too vague)
+fixing-stuff ❌ (unclear)
 \\\
 
 ---
@@ -605,35 +607,37 @@ fixing-stuff              ❌ (unclear)
 - Auth tokens: Never logged or hardcoded
 
 \\\ash
+
 # .env.local (add to .gitignore)
+
 DATABASE_URL=postgres://user:pass@host/db
 API_KEY=sk-1234567890
 \\\
 
 ### 2. Input Validation
 
-\\\	ypescript
+\\\ ypescript
 // ✅ ALWAYS validate
 if (!email.includes("@")) {
-  throw new Error("Invalid email");
+throw new Error("Invalid email");
 }
 
 if (age < 0 || age > 150) {
-  throw new Error("Invalid age");
+throw new Error("Invalid age");
 }
 \\\
 
 ### 3. CORS Headers (for API routes)
 
-\\\	ypescript
+\\\ ypescript
 export async function POST(req: Request) {
-  // Set appropriate CORS
-  const headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin":
-      process.env.ALLOWED_ORIGIN || "http://localhost:3000",
-  };
-  return Response.json({ data }, { headers });
+// Set appropriate CORS
+const headers = {
+"Content-Type": "application/json",
+"Access-Control-Allow-Origin":
+process.env.ALLOWED_ORIGIN || "http://localhost:3000",
+};
+return Response.json({ data }, { headers });
 }
 \\\
 
@@ -648,7 +652,7 @@ export async function POST(req: Request) {
 3. Document the exception with a comment explaining the trade-off
 4. Example:
 
-\\\	ypescript
+\\\ ypescript
 // EXCEPTION: Using \ny\ because third-party lib returns untyped response
 const result: any = legacyApi.call();
 
@@ -661,7 +665,7 @@ const result: any = legacyApi.call();
 ## References
 
 - Next.js docs: \
-ode_modules/next/dist/docs/\
+  ode_modules/next/dist/docs/\
 - TypeScript handbook: https://www.typescriptlang.org/docs/
 - Test patterns: \.claude/skills/tdd-workflow/\
 - Workflow: [CLAUDE.md](./CLAUDE.md)
