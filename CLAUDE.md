@@ -4,42 +4,40 @@ This document provides project-specific guidance that augments the agent definit
 
 ## Current Status
 
-This repository is an **AI Engineering OS foundation** under development.
+This repository is an **AI Engineering OS foundation** under development. 
 
 - ✅ Implemented: build, lint, format scripts
 - ✅ Implemented: TypeScript strict mode, Tailwind CSS setup
 - ✅ Implemented: Governance rules documentation
-- ✅ Implemented: enterprise SDLC workflow and governance artifacts
 - 🔄 In Progress: Agent capability specifications
 - 🔄 In Progress: Workflow automation and CI/CD
 - 📋 Planned: Command orchestration (`/plan`, `/tdd`, etc.)
 
 ## Quick Workflow Summary
 
-The intended workflow is now governed by the enterprise SDLC model in `SDLC.md`.
+The intended workflow (when fully implemented) will be:
 
 ### Start a new feature
 
 ```
-/plan "Add user authentication"     → Planner creates discovery and implementation plan
-/tdd                                  → Testing-guide defines failing tests first
-[nextjs-implementation]               → Write code only after architecture and TDD approvals
-/code-review                          → Code-reviewer validates quality
-/security-review                       → Security-reviewer validates security for enterprise mode
-/release                               → Deploy after all gates pass
+/plan "Add user authentication"     → Planner creates breakdown [PLANNED]
+/tdd                                 → TDD-guide enforces write-tests-first [PLANNED]
+[Implement using nextjs-implementation]
+/code-review                         → Code-reviewer checks quality [PLANNED]
+/test-coverage                       → Testing-guide verifies 80%+ coverage [PLANNED]
+Merge when all checks pass
 ```
 
-### Current workflow
+### Current workflow (until orchestration is ready)
 
 For now, follow this manual process:
 
-1. Read `SDLC.md` and `.claude/rules/sdlc.md`
-2. Confirm whether the task is `lightweight` or `enterprise`
-3. Complete Discovery and Business Analysis before System Analysis or Architecture
-4. Write tests first under the TDD skill
-5. Write code only after architecture and TDD artifacts are approved
-6. Run `npm run lint` and `npm test`
-7. Review and security signoff before release
+1. Read relevant rule docs in `.claude/rules/`
+2. Write code following RULES.md standards
+3. Run `npm run lint`
+4. Run `npm run test` to verify tests
+5. Review against `code-reviewer.md` guidelines
+6. Merge when all checks pass
 
 ---
 
@@ -49,8 +47,6 @@ For now, follow this manual process:
 app-template/
 ├── .claude/                        # Claude Code configuration
 │   ├── agents/                     # Agent role specifications (in progress)
-│   ├── adr/                        # Architecture decision records
-│   ├── memory/                     # Workspace memory conventions
 │   ├── skills/                     # Skill workflows (in progress)
 │   ├── rules/
 │   │   ├── common/                 # Universal principles
@@ -166,8 +162,7 @@ If using Claude Code directly, add to `~/.claude/settings.json`:
 - **Next.js Docs:** Check `node_modules/next/dist/docs/` for version-specific guide
 - **TypeScript:** [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - **Testing:** Vitest docs + Examples in `.claude/skills/tdd-workflow/`
-- **Architecture:** See RULES.md and `.claude/adr/` for decision documentation
-- **Memory:** Refer to `.claude/memory/` for workspace memory conventions
+- **Architecture:** See RULES.md for patterns and anti-patterns
 
 ---
 

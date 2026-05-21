@@ -1,0 +1,76 @@
+{
+  "workflow": {
+    "currentPhase": "discovery",
+    "mode": "lightweight",
+    "artifacts": {
+      "discovery": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "business-analysis": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "planning": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "tdd": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "implementation": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "review": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      },
+      "release": {
+        "status": "pending",
+        "file": null,
+        "completedBy": null,
+        "completedAt": null
+      }
+    },
+    "approvals": {
+      "discovery": false,
+      "business-analysis": false,
+      "planning": false,
+      "tdd": false,
+      "implementation": false,
+      "review": false,
+      "release": false
+    },
+    "activeAgent": "planner",
+    "blockers": [],
+    "wave": "MVP",
+    "history": [
+      {
+        "timestamp": "2026-05-21T00:00:00Z",
+        "type": "workflow_initialized",
+        "phase": "discovery",
+        "actor": "bootstrap"
+      }
+    ]
+  },
+  "metadata": {
+    "createdAt": "2026-05-21T00:00:00Z",
+    "lastUpdatedAt": "2026-05-21T00:00:00Z",
+    "lastUpdatedBy": "bootstrap",
+    "version": "1.0"
+  }
+}

@@ -1,10 +1,10 @@
 # Project Agents
 
-**Important:** This follows the [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) architecture. See `SDLC.md` and `CLAUDE.md` for workflow context.
+**Important:** This follows the [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) architecture. See [CLAUDE.md](./CLAUDE.md) for workflow context.
 
-**STATUS:** Agent roles are defined here and detailed agent specifications now exist in `.claude/agents/`.
+**STATUS:** Agent conceptual roles are defined below. Concrete agent specs in `.claude/agents/` are **currently being established**.
 
-These agent definitions are the operational contract for SDLC ownership, handoffs, and enforcement.
+These agent definitions are the operational contract. Detailed agent capability files will be created in `.claude/agents/` as the system matures.
 
 ---
 
@@ -12,11 +12,10 @@ These agent definitions are the operational contract for SDLC ownership, handoff
 
 Each agent MUST:
 
-- Follow `RULES.md` and `.claude/rules/sdlc.md` before taking any action
-- Refuse to proceed if required SDLC artifacts are missing
+- Follow RULES.md strictly before taking any action
+- Refuse to proceed if rules are violated
 - Delegate the task if it is outside its scope
-- Ensure that execution produces actual code changes only when the phase is correct
-- Prevent premature implementation by validating gate conditions
+- Ensure that execution produces actual code changes (not just explanations)
 
 ---
 
@@ -24,120 +23,104 @@ Each agent MUST:
 
 ### planner
 
-**Plan feature execution** and enforce phase ordering.
+**Plan feature implementation** with clear steps, milestones, and acceptance criteria.
 
-- **Use when:** Starting a new feature, managing SDLC mode, or validating phase progression
-- **Scope:** Discovery and Planning
+- **Use when:** Starting a new feature or major refactor
+- **Scope:** Read codebase, suggest architecture, create task breakdown
 - **Tools:** Read, Grep, Glob
-- **NOT:** Writing production code or bypassing analysis phases
-
-### business-analyst
-
-**Capture business requirements and domain rules.**
-
-- **Use when:** Business analysis is required or when the task is under-specified
-- **Scope:** Business Analysis
-- **Tools:** Read, Research, Document
-- **NOT:** Designing low-level architecture or writing code
-
-### architect
-
-**Design the system architecture and boundaries.**
-
-- **Use when:** System Analysis or Architecture is needed
-- **Scope:** System Analysis and Architecture
-- **Tools:** Read, Modeling, Document
-- **NOT:** Writing production code or skipping architecture approval
+- **NOT:** Writing production code (delegate to nextjs-implementation)
 
 ### nextjs-implementation
 
-**Write production code under approved architecture.**
+**Write production Next.js code** following the project's patterns and standards.
 
-- **Use when:** Implementation is ready and gates are satisfied
-- **Scope:** Implementation
-- **Tools:** Read, Edit, Bash
-- **NOT:** Starting without architecture, TDD artifacts, or plan approval
-
-### testing-guide
-
-**Drive test-first delivery and coverage.**
-
-- **Use when:** Creating tests or validating coverage
-- **Scope:** TDD and test quality
-- **Tools:** Read, Grep, Bash
-- **NOT:** Implementing business logic or overriding review gates
+- **Use when:** Implementing features, components, API routes, or database schemas
+- **Scope:** Create/edit files, follow component conventions, use project dependencies
+- **Tools:** Read, Edit, Bash (via npm/docker)
+- **NOT:** Architecture (ask planner) or debugging (ask debugger)
 
 ### code-reviewer
 
-**Validate implementation quality and compliance.**
+**Review code** for quality, TypeScript correctness, and adherence to standards.
 
-- **Use when:** Code is ready for review
-- **Scope:** Review
+- **Use when:** Code is written and needs review before merge
+- **Scope:** Read code, identify issues, suggest improvements, check patterns
 - **Tools:** Read, Grep
-- **NOT:** Writing new feature code or approving insecure changes
+- **NOT:** Writing code (ask implementation) or fixing bugs (ask debugger)
+
+### debugger
+
+**Fix bugs and resolve runtime/build errors** with systematic investigation.
+
+- **Use when:** Test failures, runtime errors, or build errors occur
+- **Scope:** Read error output, trace execution, read test files, propose fixes
+- **Tools:** Read, Grep, Bash (run tests)
+- **NOT:** Architecture (ask planner) or code review (ask code-reviewer)
 
 ### security-reviewer
 
-**Audit security and release controls.**
+**Audit code** for vulnerabilities, injection risks, and secure patterns.
 
-- **Use when:** Security validation is required
-- **Scope:** Security Review
+- **Use when:** Code handles auth, secrets, user input, or database queries
+- **Scope:** Read code, identify security gaps, suggest secure patterns
 - **Tools:** Read, Grep
-- **NOT:** Skipping security review for enterprise mode releases
+- **NOT:** Architecture (ask planner) or general code review (ask code-reviewer)
+
+### testing-guide
+
+**Ensure test coverage and TDD practices** are followed.
+
+- **Use when:** Writing tests or verifying coverage before merge
+- **Scope:** Read tests, suggest test cases, verify 80%+ line coverage
+- **Tools:** Read, Grep, Bash (run tests)
+- **NOT:** Implementation (ask nextjs-implementation)
 
 ---
 
 ## When to Delegate
 
-| Situation                         | Agent                 | Pattern                                     |
-| --------------------------------- | --------------------- | ------------------------------------------- |
-| "How should I structure auth?"    | planner               | Discovery/architecture planning             |
-| "I need business requirements"    | business-analyst      | Define actors, rules, and use cases         |
-| "How should the system be built?" | architect             | System analysis and architecture design     |
-| "Implement the user signup form"  | nextjs-implementation | Feature request → write code after approval |
-| "Are tests sufficient?"           | testing-guide         | TDD and coverage validation                 |
-| "Review my login component"       | code-reviewer         | Code written → quality check                |
-| "Is this auth secure?"            | security-reviewer     | Security validation before release          |
+| Situation                        | Agent                 | Pattern                                   |
+| -------------------------------- | --------------------- | ----------------------------------------- |
+| "How should I structure auth?"   | planner               | Big architectural Q → task breakdown      |
+| "Implement the user signup form" | nextjs-implementation | Feature request → write code              |
+| "Review my login component"      | code-reviewer         | Code written → quality check              |
+| "Why are tests failing?"         | debugger              | Error message → root cause → fix          |
+| "Is this auth secure?"           | security-reviewer     | Code handling secrets → security analysis |
+| "Did I test everything?"         | testing-guide         | Pre-merge → coverage check                |
 
 ---
 
-## SDLC Handoff Pattern
+## Delegation Pattern
 
 ```
 User request or /plan command
 │
-├─ planner
-│  → Establishes mode, discovery, and plan
+├─ Planner (if task is undefined)
+│  → Creates implementation plan
+│  → Breaks into subtasks
 │
-├─ business-analyst
-│  → Produces business goals, actors, rules, and edge cases
+├─ Implementation (if subtask is ready)
+│  → Writes code
+│  → Updates tests
 │
-├─ architect
-│  → Designs system boundaries and architecture
+├─ Debugger (if tests fail)
+│  → Fixes broken tests
+│  → Confirms all pass
 │
-├─ testing-guide
-│  → Creates failing tests and validates coverage
+├─ Code-Reviewer (before merge)
+│  → Checks quality
+│  → Suggests improvements
 │
-├─ nextjs-implementation
-│  → Writes code after architecture and TDD approval
+├─ Testing-Guide (if coverage low)
+│  → Adds missing tests
+│  → Verifies 80%+ coverage
 │
-├─ code-reviewer
-│  → Reviews quality and compliance
-│
-└─ security-reviewer
-   → Validates security and enables release
+└─ Security-Reviewer (if auth/secrets/input)
+   → Checks for vulnerabilities
+   → Confirms secure patterns
 ```
 
-**Rule:** Do not skip to implementation without completing prior SDLC phases. If architecture or required tests are absent, route back to the owning agent.
-
----
-
-## References
-
-- `SDLC.md`
-- `.claude/rules/sdlc.md`
-- `.claude/agents/*.agent.md`
-- `.claude/skills/*.skill.md`
+**Rule:** Don't skip to implementation without planning. Cascade through agents in order when multiple are needed.
 
 ---
 
