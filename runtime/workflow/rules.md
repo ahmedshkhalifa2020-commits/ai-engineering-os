@@ -40,6 +40,7 @@ These rules are referenced by the enforcement engine to validate workflow action
 ## Rule Violation Handling
 
 When a rule violation is detected:
+
 1. Reject the action with a clear reason
 2. Log the violation attempt
 3. Record the blocker in workflow state

@@ -21,6 +21,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ### TDD Phase Checkpoints
 
 **Checkpoint: Tests Syntax Valid**
+
 - Trigger: On test file commit
 - Check: Test files compile/parse correctly
 - Pass: Tests are syntactically valid
@@ -30,6 +31,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ### Implementation Phase Checkpoints
 
 **Checkpoint: Lint Passes**
+
 - Trigger: On code commit
 - Command: `npm run lint`
 - Pass: No linting errors
@@ -37,6 +39,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 - Blocking: Yes (blocks CI progress)
 
 **Checkpoint: Build Succeeds**
+
 - Trigger: After lint passes
 - Command: `npm run build`
 - Pass: Build completes without errors
@@ -44,6 +47,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 - Blocking: Yes
 
 **Checkpoint: Tests Pass**
+
 - Trigger: After build succeeds
 - Command: `npm test`
 - Pass: All tests pass
@@ -51,6 +55,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 - Blocking: Yes
 
 **Checkpoint: Coverage Meets Threshold**
+
 - Trigger: After tests pass
 - Check: Coverage ≥ 80%
 - Pass: Coverage threshold met
@@ -60,6 +65,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ### Review Phase Checkpoints
 
 **Checkpoint: PR Linked**
+
 - Trigger: On feature branch
 - Check: PR exists and linked to runtime state
 - Pass: PR metadata found
@@ -69,6 +75,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ### Security Phase Checkpoints (Enterprise)
 
 **Checkpoint: Security Review Recorded**
+
 - Trigger: Before release
 - Check: approval.security = true in runtime state
 - Pass: Security review approved
@@ -78,6 +85,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ### Release Phase Checkpoints
 
 **Checkpoint: All Prior Checkpoints Pass**
+
 - Trigger: On release request
 - Check: All prior phase checkpoints passed
 - Pass: Release eligible
@@ -87,6 +95,7 @@ Defines automated validation checkpoints that occur during CI pipeline execution
 ## Checkpoint Status Reporting
 
 Checkpoint results are:
+
 - Reported to runtime state
 - Used by enforcement gates
 - Logged in `.claude/runtime-logs/`
@@ -95,6 +104,7 @@ Checkpoint results are:
 ## Checkpoint Failure Handling
 
 When a checkpoint fails:
+
 1. CI reports failure with clear error message
 2. Runtime state is updated with failure status
 3. Workflow progression is blocked

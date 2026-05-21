@@ -60,11 +60,13 @@ When a merge is requested:
 ## Merge Gate Status Display
 
 When a merge is blocked, display:
+
 - Which rule(s) failed
 - What is required to pass
 - Next steps to unblock
 
 Example:
+
 ```
 Merge blocked. Violations:
 ✗ Code review approval required (code-reviewer must approve)

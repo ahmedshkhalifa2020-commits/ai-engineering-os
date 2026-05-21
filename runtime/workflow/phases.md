@@ -73,6 +73,7 @@ Also adds Security phase before Release:
 ## Valid Transitions
 
 A phase transition is allowed only if:
+
 - Current phase is complete
 - Required artifacts exist and are valid
 - Required approvals are granted

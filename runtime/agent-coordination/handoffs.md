@@ -57,6 +57,7 @@ When a phase completes and workflow transitions, generate a handoff record that 
 ## Handoff Delivery
 
 Handoff records are:
+
 - Stored in `.claude/runtime-logs/` for audit
 - Made available to the assigned agent
 - Used to validate completion of phase

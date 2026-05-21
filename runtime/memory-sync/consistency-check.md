@@ -39,6 +39,7 @@ Validates that `.claude/memory/` artifacts are consistent with runtime state in 
 ## Consistency Check Invocation
 
 Consistency checks run:
+
 - On phase transition
 - On request (manual trigger)
 - Periodically (e.g., daily)
@@ -63,6 +64,7 @@ Status: 1 inconsistency detected. Sync recommended.
 ## Resolution Options
 
 When inconsistency detected:
+
 1. Auto-sync memory to match runtime (preferred)
 2. Alert user for manual review
 3. Block workflow until resolved (strict mode)

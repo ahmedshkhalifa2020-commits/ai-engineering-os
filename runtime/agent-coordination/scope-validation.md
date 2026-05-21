@@ -41,6 +41,7 @@ If scope violation detected:
 4. Do not execute the requested action
 
 Example response:
+
 ```
 SCOPE VIOLATION: nextjs-implementation cannot enter implementation phase.
 Reason: TDD artifacts missing.

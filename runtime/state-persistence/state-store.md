@@ -9,6 +9,7 @@ Defines where and how runtime state is persisted and retrieved.
 Canonical runtime state is stored in: `.claude/runtime-state.json`
 
 This file is:
+
 - Version-controlled in Git
 - Human-readable JSON
 - Updated on state changes
@@ -67,13 +68,13 @@ New projects initialize with:
     "currentPhase": "discovery",
     "mode": "lightweight",
     "artifacts": {
-      "discovery": {"status": "pending"},
-      "business-analysis": {"status": "pending"},
-      "planning": {"status": "pending"},
-      "tdd": {"status": "pending"},
-      "implementation": {"status": "pending"},
-      "review": {"status": "pending"},
-      "release": {"status": "pending"}
+      "discovery": { "status": "pending" },
+      "business-analysis": { "status": "pending" },
+      "planning": { "status": "pending" },
+      "tdd": { "status": "pending" },
+      "implementation": { "status": "pending" },
+      "review": { "status": "pending" },
+      "release": { "status": "pending" }
     },
     "approvals": {
       "discovery": false,

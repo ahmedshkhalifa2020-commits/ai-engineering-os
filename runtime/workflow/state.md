@@ -22,6 +22,7 @@ The canonical workflow state is stored in `.claude/runtime-state.json`.
 ## State Transitions
 
 State changes occur when:
+
 - A phase is marked complete
 - An artifact is validated
 - An approval is granted

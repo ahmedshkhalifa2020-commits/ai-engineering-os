@@ -6,25 +6,27 @@ Defines which component owns each memory artifact and how it is maintained.
 
 ## Memory Artifact Ownership
 
-| Artifact | Owner | Updated By | Update Trigger |
-|----------|-------|-----------|-----------------|
-| current-system-state.md | Workflow State Manager | Memory Sync Controller | Phase change, blocker event |
-| active-modules.md | Runtime Manager | Manual/Sync | Milestone completion |
-| roadmap.md | Planning Agent | Memory Sync Controller | Phase completion, wave transition |
-| known-risks.md | Runtime Manager | Memory Sync Controller | Blocker detection, resolution |
-| pending-decisions.md | Planning Agent | Memory Sync Controller | Decision needed, decision made |
-| implementation-status.md | Runtime Manager | Memory Sync Controller | Artifact completion, phase completion |
+| Artifact                 | Owner                  | Updated By             | Update Trigger                        |
+| ------------------------ | ---------------------- | ---------------------- | ------------------------------------- |
+| current-system-state.md  | Workflow State Manager | Memory Sync Controller | Phase change, blocker event           |
+| active-modules.md        | Runtime Manager        | Manual/Sync            | Milestone completion                  |
+| roadmap.md               | Planning Agent         | Memory Sync Controller | Phase completion, wave transition     |
+| known-risks.md           | Runtime Manager        | Memory Sync Controller | Blocker detection, resolution         |
+| pending-decisions.md     | Planning Agent         | Memory Sync Controller | Decision needed, decision made        |
+| implementation-status.md | Runtime Manager        | Memory Sync Controller | Artifact completion, phase completion |
 
 ## Update Responsibilities
 
 ### Workflow State Manager
 
 Owns and updates:
+
 - Current phase and active agent
 - Artifact status registry
 - Approval flags
 
 Responsible for:
+
 - Reading runtime state
 - Writing to memory/current-system-state.md
 - Maintaining audit trail
@@ -32,11 +34,13 @@ Responsible for:
 ### Memory Sync Controller
 
 Owns and executes:
+
 - Sync operations
 - Consistency validation
 - Stale state detection
 
 Responsible for:
+
 - Triggering syncs on events
 - Validating memory consistency
 - Generating inconsistency reports
@@ -44,11 +48,13 @@ Responsible for:
 ### Agents
 
 Provide content for:
+
 - Completion status
 - Artifact details
 - Decision outcomes
 
 Responsible for:
+
 - Completing assigned work
 - Requesting approval
 - Documenting decisions

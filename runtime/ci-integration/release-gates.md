@@ -16,11 +16,13 @@ Defines when a project can be released based on workflow state, approvals, and C
 ### Rule: All Approvals Must Be Granted
 
 **Lightweight Mode**:
+
 - **Check**: approval.review == true
 - **Pass**: Code review approved
 - **Fail**: "Cannot release. Code review approval required"
 
 **Enterprise Mode**:
+
 - **Check**: approval.review == true AND approval.security == true
 - **Pass**: Code review and security approved
 - **Fail**: "Cannot release. Missing approvals: {missing_approvers}"
@@ -74,11 +76,13 @@ When a release is requested:
 ## Release Gate Status Display
 
 When a release is blocked, display:
+
 - Which rule(s) failed
 - What is required
 - How to remedy
 
 Example:
+
 ```
 Release blocked. Violations:
 ✗ Security review approval required (security-reviewer must approve)
