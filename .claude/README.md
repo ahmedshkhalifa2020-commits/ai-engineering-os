@@ -34,10 +34,11 @@ This folder contains the complete configuration system for Claude Code AI agent 
 ## Root-Level Configuration
 
 | File                | Purpose                                   | Audience                   |
-| ------------------- | ----------------------------------------- | -------------------------- | --- | ---------------- | ------------------------------------- | --------------------- |
+| ------------------- | ----------------------------------------- | -------------------------- |
 | **AGENTS.md**       | Agent delegation index + when to use each | Everyone (foundation)      |
 | **CLAUDE.md**       | Project workflow + conventions            | Developers & AI agents     |
-| **RULES.md**        | Top-level checklist of all rules          | Everyone (quick reference) |     | **.claude/adr/** | Architecture decision record guidance | Architects & planners |
+| **RULES.md**        | Top-level checklist of all rules          | Everyone (quick reference) |
+| **.claude/adr/**    | Architecture decision record guidance     | Architects & planners      |
 | **.claude/memory/** | Workspace memory conventions              | Agents & session workflows |
 
 ---
