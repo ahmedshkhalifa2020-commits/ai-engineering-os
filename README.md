@@ -18,6 +18,8 @@ This repository is a **base template** for projects using AI-assisted developmen
 - `RULES.md` — Engineering standards and enforcement rules
 - `CLAUDE.md` — Project workflow and conventions
 - `.claude/` — AI operational configuration
+- `.claude/adr/` — Architecture decision records and design rationale
+- `.claude/memory/` — Memory and workspace knowledge conventions
 - `.claude/rules/` — Governance rules by domain
 - `.claude/agents/` — Agent capability specifications
 - `.claude/skills/` — Reusable workflow skills
@@ -50,7 +52,9 @@ npm run build     # Production build
 ```
 src/app/              # Next.js app directory
 .claude/              # AI workflow configuration
+├── adr/              # Architecture decision records
 ├── agents/           # Agent role specifications
+├── memory/           # Workspace memory conventions
 ├── rules/            # Governance and standards
 └── skills/           # Reusable workflow docs
 AGENTS.md             # Agent delegation guide

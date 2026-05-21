@@ -49,6 +49,8 @@ For now, follow this manual process:
 app-template/
 ├── .claude/                        # Claude Code configuration
 │   ├── agents/                     # Agent role specifications (in progress)
+│   ├── adr/                        # Architecture decision records
+│   ├── memory/                     # Workspace memory conventions
 │   ├── skills/                     # Skill workflows (in progress)
 │   ├── rules/
 │   │   ├── common/                 # Universal principles
@@ -164,7 +166,8 @@ If using Claude Code directly, add to `~/.claude/settings.json`:
 - **Next.js Docs:** Check `node_modules/next/dist/docs/` for version-specific guide
 - **TypeScript:** [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - **Testing:** Vitest docs + Examples in `.claude/skills/tdd-workflow/`
-- **Architecture:** See RULES.md for patterns and anti-patterns
+- **Architecture:** See RULES.md and `.claude/adr/` for decision documentation
+- **Memory:** Refer to `.claude/memory/` for workspace memory conventions
 
 ---
 

@@ -9,6 +9,12 @@ This folder contains the complete configuration system for Claude Code AI agent 
 ├── agents/                   # Agent definitions (delegation targets)
 │   └── [agent-name].md       # Individual agent specs
 │
+├── adr/                      # Architecture decision records
+│   └── README.md             # ADR guidance and templates
+│
+├── memory/                   # Workspace memory conventions
+│   └── README.md             # Memory usage guidance and templates
+│
 ├── skills/                   # Workflow skills and domain knowledge
 │   └── [skill-name]/
 │       └── SKILL.md          # Skill definition
@@ -31,8 +37,8 @@ This folder contains the complete configuration system for Claude Code AI agent 
 | ------------- | ----------------------------------------- | -------------------------- |
 | **AGENTS.md** | Agent delegation index + when to use each | Everyone (foundation)      |
 | **CLAUDE.md** | Project workflow + conventions            | Developers & AI agents     |
-| **RULES.md**  | Top-level checklist of all rules          | Everyone (quick reference) |
-
+| **RULES.md**  | Top-level checklist of all rules          | Everyone (quick reference) || **.claude/adr/** | Architecture decision record guidance  | Architects & planners      |
+| **.claude/memory/** | Workspace memory conventions        | Agents & session workflows |
 ---
 
 ## How Claude Code Uses This
