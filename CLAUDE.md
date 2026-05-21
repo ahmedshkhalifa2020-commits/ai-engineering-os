@@ -2,36 +2,42 @@
 
 This document provides project-specific guidance that augments the agent definitions in [AGENTS.md](./AGENTS.md).
 
+## Current Status
+
+This repository is an **AI Engineering OS foundation** under development. 
+
+- ✅ Implemented: build, lint, format scripts
+- ✅ Implemented: TypeScript strict mode, Tailwind CSS setup
+- ✅ Implemented: Governance rules documentation
+- 🔄 In Progress: Agent capability specifications
+- 🔄 In Progress: Workflow automation and CI/CD
+- 📋 Planned: Command orchestration (`/plan`, `/tdd`, etc.)
+
 ## Quick Workflow Summary
+
+The intended workflow (when fully implemented) will be:
 
 ### Start a new feature
 
 ```
-/plan "Add user authentication"     → Planner creates breakdown
-/tdd                                 → TDD-guide enforces write-tests-first
+/plan "Add user authentication"     → Planner creates breakdown [PLANNED]
+/tdd                                 → TDD-guide enforces write-tests-first [PLANNED]
 [Implement using nextjs-implementation]
-/code-review                         → Code-reviewer checks quality
-/test-coverage                       → Testing-guide verifies 80%+ coverage
+/code-review                         → Code-reviewer checks quality [PLANNED]
+/test-coverage                       → Testing-guide verifies 80%+ coverage [PLANNED]
 Merge when all checks pass
 ```
 
-### Fix a failing test
+### Current workflow (until orchestration is ready)
 
-```
-/tdd                                 → TDD-guide: write failing test
-[Implement fix]
-/test-coverage                       → Verify test passes + coverage
-/code-review                         → Code-reviewer: check for regressions
-```
+For now, follow this manual process:
 
-### Prepare for production
-
-```
-/security-scan                       → Security-reviewer: OWASP checks
-/test-coverage                       → Verify 80%+ coverage
-/code-review                         → Final quality gate
-Deploy
-```
+1. Read relevant rule docs in `.claude/rules/`
+2. Write code following RULES.md standards
+3. Run `npm run lint`
+4. Run `npm run test` to verify tests
+5. Review against `code-reviewer.md` guidelines
+6. Merge when all checks pass
 
 ---
 
@@ -40,8 +46,8 @@ Deploy
 ```
 app-template/
 ├── .claude/                        # Claude Code configuration
-│   ├── agents/                     # Agent definitions (future)
-│   ├── skills/                     # Skill workflows (future)
+│   ├── agents/                     # Agent role specifications (in progress)
+│   ├── skills/                     # Skill workflows (in progress)
 │   ├── rules/
 │   │   ├── common/                 # Universal principles
 │   │   └── nextjs/                 # Next.js-specific rules
@@ -52,7 +58,7 @@ app-template/
 │   │   ├── page.tsx                # Root page
 │   │   ├── layout.tsx              # Root layout
 │   │   └── globals.css             # Global styles
-│   └── [features]/                 # Feature modules
+│   └── __tests__/                  # Test files
 │
 ├── AGENTS.md                       # Agent definitions & delegation guide
 ├── CLAUDE.md                       # This file - project workflow

@@ -2,6 +2,10 @@
 
 **Important:** This follows the [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) architecture. See [CLAUDE.md](./CLAUDE.md) for workflow context.
 
+**STATUS:** Agent conceptual roles are defined below. Concrete agent specs in `.claude/agents/` are **currently being established**.
+
+These agent definitions are the operational contract. Detailed agent capability files will be created in `.claude/agents/` as the system matures.
+
 ---
 
 ## Global Agent Constraints
