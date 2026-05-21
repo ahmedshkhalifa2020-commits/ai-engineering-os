@@ -12,7 +12,7 @@ The repository's governance and workflow depend on transparent, versioned docume
 
 ## Decision
 
-We adopt a documentation-first execution model where: 
+We adopt a documentation-first execution model where:
 
 - governance is defined in repository docs first
 - agent behavior follows documented rules
